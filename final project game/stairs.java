@@ -16,6 +16,7 @@ public class stairs extends Actor
     {
         getImage().scale(getImage().getWidth()/2,getImage().getHeight()/2);
     }
+    
     public void act() 
     {
         // Add your action code here.

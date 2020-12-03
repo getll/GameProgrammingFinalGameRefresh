@@ -13,8 +13,9 @@ public class floor extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public floor(){
-        getImage().scale(getImage().getWidth()*6,getImage().getHeight()/4);
+        getImage().scale(getImage().getWidth()*6,getImage().getHeight()/8);
     }
+    
     public void act() 
     {
         // Add your action code here.

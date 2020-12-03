@@ -16,6 +16,7 @@ public class floor2 extends Actor
     {
         getImage().scale(getImage().getWidth()*4,getImage().getHeight());
     }
+    
     public void act() 
     {
         // Add your action code here.
