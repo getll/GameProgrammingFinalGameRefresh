@@ -18,6 +18,7 @@ public class Forest extends World
     {
         super(900, 600, 1);
         prepare();
+        setBackground(new GreenfootImage("Forest.png"));
     }
 
     /**
@@ -26,7 +27,7 @@ public class Forest extends World
      */
     private void prepare()
     {
-        setBackground(new GreenfootImage("Forest.png"));
+        
         
         Player player = new Player();
         addObject(player,734,100);

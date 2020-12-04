@@ -18,6 +18,7 @@ public class Beach extends World
     {
         super(900, 600, 1);
         prepare();
+        setBackground(new GreenfootImage("Beach.png"));
     }
 
     /**
@@ -26,7 +27,7 @@ public class Beach extends World
      */
     private void prepare()
     {
-        setBackground(new GreenfootImage("Beach.png"));
+        
         
         Door door = new Door();
         addObject(door,116,529);

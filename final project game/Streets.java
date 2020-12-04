@@ -19,6 +19,7 @@ public class Streets extends World
     {
         super(900, 600, 1);
         prepare();
+        setBackground(new GreenfootImage("Streets.png"));
     }
 
     /**
@@ -27,8 +28,6 @@ public class Streets extends World
      */
     private void prepare()
     {
-        setBackground(new GreenfootImage("Streets.png"));
-        
         Player player = new Player();
         addObject(player,740,546);
         

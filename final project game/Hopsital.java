@@ -18,6 +18,7 @@ public class Hopsital extends World
     {
         super(900, 600, 1);
         prepare();
+        
     }
     
     /**
@@ -81,6 +82,7 @@ public class Hopsital extends World
         addObject(stairs14,452,560);
 
         Player player = new Player();
+        Player.reset(); //to let the world number reset
         addObject(player,235,221);
 
         Zombie zombie = new Zombie(2, 5, 2); //speed, damage, health

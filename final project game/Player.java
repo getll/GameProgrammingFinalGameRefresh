@@ -9,8 +9,8 @@ import java.util.*;
  */
 public class Player extends Actor
 {
-    private int firingRate = 20;
-    private int firingCounter = 0;
+    private int firingRate;
+    private int firingCounter;
     private static int health = 100;
     private static int levelProgress = 0;
     
@@ -20,6 +20,8 @@ public class Player extends Actor
     public Player()
     {
         velocity = 0;
+        firingRate = 20;
+        firingCounter = 0;
     }
     
     public void act() 
@@ -27,14 +29,21 @@ public class Player extends Actor
         move();
         shoot();
         fall();
+        checkGameOver();
+    }
+    
+    public static void reset()
+    {
+        health = 100;
+        levelProgress = 0;
     }
     
     public void fall(){
         setLocation(getX(),getY()+velocity);
         if(isOnSolidGround())
-            velocity=0;
+            velocity = 0;
         else
-            velocity+=gravity;
+            velocity += gravity;
     }
     
     public void jump(){
@@ -67,30 +76,47 @@ public class Player extends Actor
     }
     
     public boolean isOnSolidGround() {
-        boolean isOnGround=false;
+        boolean isOnGround = false;
         
-        int imageWidth=getImage().getWidth();
-        int imageHeight=getImage().getHeight();
+        int imageWidth = getImage().getWidth();
+        int imageHeight = getImage().getHeight();
+        int xDistance1 = imageWidth / -2;
+        int xDistance2 = imageWidth / 2;
+        int yDistance = imageHeight / 2;
         
-        if(getOneObjectAtOffset(imageWidth/-2,imageHeight/2,floor.class)!=null ||
-            getOneObjectAtOffset(imageWidth/2,imageHeight/2,floor.class)!=null)
-           isOnGround=true;
-        if(getOneObjectAtOffset(imageWidth/-2,imageHeight/2,floor2.class)!=null ||
-            getOneObjectAtOffset(imageWidth/2,imageHeight/2,floor2.class)!=null)
-           isOnGround=true; 
-        if(getOneObjectAtOffset(imageWidth/-2,imageHeight/2,stairs.class)!=null ||
-            getOneObjectAtOffset(imageWidth/2,imageHeight/2,stairs.class)!=null)
-           isOnGround=true;
-        if(getOneObjectAtOffset(imageWidth/-2,imageHeight/2,floor3.class)!=null ||
-            getOneObjectAtOffset(imageWidth/2,imageHeight/2,floor3.class)!=null)
-           isOnGround=true;
-        if(getY()> getWorld().getHeight()- 30)
-           isOnGround=true;
-        if(getOneObjectAtOffset(imageWidth/-2,imageHeight/2,Grass.class)!=null ||
-            getOneObjectAtOffset(imageWidth/2,imageHeight/2,Grass.class)!=null)
-           isOnGround=true;
+        if(getOneObjectAtOffset(xDistance1, yDistance, floor.class) != null ||
+            getOneObjectAtOffset(xDistance2, yDistance, floor.class) != null)
+           isOnGround = true;
+        
+        if(getOneObjectAtOffset(xDistance1, yDistance, floor2.class) != null ||
+            getOneObjectAtOffset(xDistance2, yDistance, floor2.class) != null)
+           isOnGround = true; 
+        
+        if(getOneObjectAtOffset(xDistance1, yDistance, floor3.class) != null ||
+            getOneObjectAtOffset(xDistance2, yDistance, floor3.class) != null)
+           isOnGround = true;
+        
+        if(getOneObjectAtOffset(xDistance1, yDistance, stairs.class) != null ||
+            getOneObjectAtOffset(xDistance2, yDistance, stairs.class) != null)
+           isOnGround = true;
+        
+        if(getOneObjectAtOffset(xDistance1, yDistance, Grass.class) != null ||
+            getOneObjectAtOffset(xDistance2, yDistance, Grass.class) != null)
+           isOnGround = true;
+        
+        if(getY()> getWorld().getHeight() - 30)
+           isOnGround = true;
         
         return isOnGround;
+    }
+    
+    public void checkGameOver() {
+        if (health <= 0)
+        {
+            World gameOverScreen = new GameOverScreen();
+            getWorld().stopped();
+            Greenfoot.setWorld(gameOverScreen);
+        }
     }
     
     public static void getHurt(int damage)
