@@ -81,11 +81,14 @@ public class Hopsital extends World
 
         Player player = new Player();
         addObject(player,235,221);
-        Zombie zombie = new Zombie();
+        
+        Zombie zombie = new Zombie(2, 5, 2); //speed, damage, health
         addObject(zombie,262,545);
-        Zombie zombie2 = new Zombie();
+        
+        Zombie zombie2 = new Zombie(2, 5, 2);
         addObject(zombie2,204,545);
-        Zombie zombie3 = new Zombie();
+        
+        Zombie zombie3 = new Zombie(1, 5, 2);
         addObject(zombie3,329,545);
     }
 

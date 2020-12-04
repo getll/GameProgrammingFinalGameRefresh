@@ -33,13 +33,13 @@ public class Streets extends World
         addObject(player,801,397);
         Door door = new Door(1);
         addObject(door,157,406);
-        Zombie zombie = new Zombie();
+        Zombie zombie = new Zombie(1, 5, 2);
         addObject(zombie,220,566);
-        Zombie zombie2 = new Zombie();
+        Zombie zombie2 = new Zombie(1, 5, 2);
         addObject(zombie2,289,565);
-        Zombie zombie3 = new Zombie();
+        Zombie zombie3 = new Zombie(1, 5, 2);
         addObject(zombie3,359,556);
-        Zombie zombie4 = new Zombie();
+        Zombie zombie4 = new Zombie(1, 5, 2);
         addObject(zombie4,435,563);
         floor floor = new floor();
         addObject(floor,422,349);
