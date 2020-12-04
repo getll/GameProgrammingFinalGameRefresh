@@ -1,3 +1,4 @@
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -14,6 +15,17 @@ public class HealthBar extends Actor
      */
     public void act() 
     {
+        generateText();
+    }
+    
+    public void generateText() {
+        int maxHealth = 100;
+        int currentHealth = Player.getHealth();
+        int fontSize = 40;
         
-    }    
+        GreenfootImage image = new GreenfootImage(" Health : " + currentHealth + " / " + maxHealth + " ", 
+                fontSize, Color.WHITE, Color.RED, Color.BLACK);
+        setImage(image);
+    }
+    
 }

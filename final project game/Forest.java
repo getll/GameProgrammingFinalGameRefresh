@@ -31,6 +31,13 @@ public class Forest extends World
         addObject(player,754,355);
         Door door = new Door(2);
         addObject(door,145,352);
+        door.setLocation(124,544);
+        Grass grass = new Grass();
+        addObject(grass,396,387);
+        grass.setLocation(390,597);
+        door.setLocation(108,424);
+        player.setLocation(734,555);
+        door.setLocation(69,527);
     }
     
     public void act()

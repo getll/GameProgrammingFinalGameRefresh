@@ -75,6 +75,7 @@ public class Player extends Actor
     
     public boolean isOnSolidGround() {
         boolean isOnGround=false;
+        
         int imageWidth=getImage().getWidth();
         int imageHeight=getImage().getHeight();
         
@@ -92,13 +93,16 @@ public class Player extends Actor
            isOnGround=true;
         if(getY()> getWorld().getHeight()- 30)
            isOnGround=true;
+        if(getOneObjectAtOffset(imageWidth/-2,imageHeight/2,Grass.class)!=null ||
+            getOneObjectAtOffset(imageWidth/2,imageHeight/2,Grass.class)!=null)
+           isOnGround=true;
         
         return isOnGround;
     }
     
-    public int getHealth()
+    public static int getHealth()
     {
-        return this.health;
+        return health;
     }
     
     public void getHurt(int damage)

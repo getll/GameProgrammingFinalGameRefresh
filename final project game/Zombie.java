@@ -39,10 +39,19 @@ public class Zombie extends Actor
         Actor player = getWorld().getObjects(Player.class).get(0);
         int path = player.getX();
         
+        GreenfootImage zombieImage = new GreenfootImage("zombie1.png");
+        GreenfootImage zombieImageFlipped = new GreenfootImage("zombie2.png");
+        
         if (getX() < path)
+        {
             move(movingSpeed);
+            this.setImage(zombieImage);
+        }
         else
+        {
             move(-1 * movingSpeed);
+            this.setImage(zombieImageFlipped);
+        }    
     }
     
     public int getDamage() {
