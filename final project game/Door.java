@@ -8,12 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Door extends Actor
 {
-    private int worldNum;
-    
-    public Door(int worldNum) {
-        this.worldNum = worldNum;
-    }
-    
     /**
      * Act - do whatever the Door wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -25,21 +19,25 @@ public class Door extends Actor
     
     public void enterDoor() {
         Actor Player = getOneIntersectingObject(Player.class);
+        
         if (Player != null) {
             changeWorld();
         }
     }
     
     public void changeWorld() {
-        switch (worldNum) {
+        switch (Player.getLevelProgress()) {
             case (0):
                 transitionToStreets();
+                Player.setLevelProgress(1);
                 break;
             case (1):
                 transitionToForest();
+                Player.setLevelProgress(2);
                 break;
             case (2):
                 transitionToBeach();
+                Player.setLevelProgress(3);
                 break;
             case (3):
                 transitionToWinWorld();
@@ -51,7 +49,6 @@ public class Door extends Actor
         World streets = new Streets();
         getWorld().stopped();
         Greenfoot.setWorld(streets);
-        
     }
      
     public void transitionToForest() {

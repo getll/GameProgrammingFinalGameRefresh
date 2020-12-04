@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Hopsital extends World
 {
     GreenfootSound hMusic = new GreenfootSound("Hospital soundtrack.wav");
+    
     /**
      * Constructor for objects of class Hopsital.
      * 
@@ -28,7 +29,7 @@ public class Hopsital extends World
         floor floor = new floor();
         addObject(floor,418,591);
 
-        Door door = new Door(0);
+        Door door = new Door();
         addObject(door,75,536);
 
         floor3 floor3 = new floor3();
@@ -85,27 +86,29 @@ public class Hopsital extends World
         Zombie zombie = new Zombie(2, 5, 2); //speed, damage, health
         addObject(zombie,262,545);
 
-        Zombie zombie2 = new Zombie(2, 5, 2);
+        Zombie zombie2 = new Zombie(3, 5, 2);
         addObject(zombie2,204,545);
 
         Zombie zombie3 = new Zombie(1, 5, 2);
         addObject(zombie3,329,545);
+        
         HealthBar healthBar = new HealthBar();
-        addObject(healthBar,761,50);
-        healthBar.setLocation(743,51);
+        addObject(healthBar,743,51);
     }
 
     public void act()
     {
         hMusic.play();
     }
+    
     public void started()
     {
-     hMusic.playLoop();   
+        hMusic.playLoop();   
     }
+    
     public void stopped()
     {
-     hMusic.stop();   
+        hMusic.stop();   
     }
     
 }

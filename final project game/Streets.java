@@ -18,9 +18,7 @@ public class Streets extends World
     public Streets()
     {
         super(900, 600, 1);
-        setBackground(new GreenfootImage("Streets.png"));
         prepare();
-        
     }
 
     /**
@@ -29,34 +27,31 @@ public class Streets extends World
      */
     private void prepare()
     {
+        setBackground(new GreenfootImage("Streets.png"));
+        
         Player player = new Player();
-        addObject(player,801,397);
-        Door door = new Door(1);
-        addObject(door,157,406);
+        addObject(player,740,546);
+        
+        Door door = new Door();
+        addObject(door,106,532);
+        
         Zombie zombie = new Zombie(1, 5, 2);
-        addObject(zombie,220,566);
+        addObject(zombie,224,548);
+        
         Zombie zombie2 = new Zombie(1, 5, 2);
-        addObject(zombie2,289,565);
+        addObject(zombie2,294,540);
+        
         Zombie zombie3 = new Zombie(1, 5, 2);
-        addObject(zombie3,359,556);
+        addObject(zombie3,371,543);
+        
         Zombie zombie4 = new Zombie(1, 5, 2);
-        addObject(zombie4,435,563);
+        addObject(zombie4,429,544);
+        
         floor floor = new floor();
-        addObject(floor,422,349);
-        floor.setLocation(462,597);
-        floor.setLocation(466,589);
-        zombie4.setLocation(429,544);
-        zombie3.setLocation(371,543);
-        zombie2.setLocation(295,536);
-        zombie.setLocation(233,537);
-        door.setLocation(111,525);
-        player.setLocation(740,546);
-        zombie2.setLocation(289,553);
-        zombie.setLocation(241,549);
-        zombie2.setLocation(294,540);
-        zombie.setLocation(238,525);
-        zombie.setLocation(224,548);
-        door.setLocation(106,532);
+        addObject(floor,466,589);
+        
+        HealthBar healthBar = new HealthBar();
+        addObject(healthBar,743,51);
     }
     
     public void act()
@@ -73,4 +68,5 @@ public class Streets extends World
     {
         sMusic.stop();
     }
+    
 }

@@ -11,6 +11,7 @@ public class Zombie extends Actor
     private int movingSpeed;
     private int damage;
     private int hits;
+    private int playerKnockback = 70;
     
     /**
      * Act - do whatever the Zombie wants to do. This method is called whenever
@@ -19,7 +20,7 @@ public class Zombie extends Actor
     public void act() 
     {
         followPlayer();
-        //damagePlayer();
+        damagePlayer();
         //killed();
     }
     
@@ -49,7 +50,7 @@ public class Zombie extends Actor
         }
         else
         {
-            move(-1 * movingSpeed);
+            move(-movingSpeed);
             this.setImage(zombieImageFlipped);
         }    
     }
@@ -62,8 +63,16 @@ public class Zombie extends Actor
         Actor player = getOneIntersectingObject(Player.class);
         if (player != null)
         {
-            Player p = getWorld().getObjects(Player.class).get(0);
-            p.getHurt(damage);
+            Player.getHurt(damage);
+            int path = player.getX();
+            if (getX() < path)
+            {
+                player.move(playerKnockback);
+            }
+            else
+            {
+                player.move(-playerKnockback);
+            }
         }
     }
 }   

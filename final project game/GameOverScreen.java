@@ -16,4 +16,14 @@ public class GameOverScreen extends World
     {
         super(900, 600, 1);
     }
+    
+    public void act()
+    {
+        resetPlayerHealth();
+    }
+    
+    public void resetPlayerHealth()
+    {
+        Player.setHealth(100);
+    }
 }

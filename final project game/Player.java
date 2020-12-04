@@ -11,13 +11,10 @@ public class Player extends Actor
 {
     private int firingRate = 20;
     private int firingCounter = 0;
-    public static int health = 100;
+    private static int health = 100;
+    private static int levelProgress = 0;
     
-    /**
-     * Act - do whatever the Player wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    private final int gravity=1;
+    private final int gravity = 1;
     private int velocity;
     
     public Player()
@@ -30,8 +27,6 @@ public class Player extends Actor
         move();
         shoot();
         fall();
-        if(Greenfoot.isKeyDown("w")&& isOnSolidGround())
-            jump();
     }
     
     public void fall(){
@@ -49,13 +44,11 @@ public class Player extends Actor
     public void move()
     {
         if (Greenfoot.isKeyDown("a"))
-        {
             move(-4);
-        }
         if (Greenfoot.isKeyDown("d"))
-        {
             move(4);
-        }
+        if(Greenfoot.isKeyDown("w")&& isOnSolidGround())
+            jump();
     }
     
     public void shoot()
@@ -100,14 +93,29 @@ public class Player extends Actor
         return isOnGround;
     }
     
+    public static void getHurt(int damage)
+    {
+        health -= damage;
+    }
+    
     public static int getHealth()
     {
         return health;
     }
     
-    public void getHurt(int damage)
+    public static void setHealth(int newHealth)
     {
-        this.health -= damage;
+        health = newHealth;
+    }
+    
+    public static void setLevelProgress(int worldNum)
+    {
+        levelProgress = worldNum;
+    }
+    
+    public static int getLevelProgress()
+    {
+        return levelProgress;
     }
 }
 

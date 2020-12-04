@@ -17,7 +17,6 @@ public class Forest extends World
     public Forest()
     {
         super(900, 600, 1);
-        setBackground(new GreenfootImage("Forest.png"));
         prepare();
     }
 
@@ -27,17 +26,19 @@ public class Forest extends World
      */
     private void prepare()
     {
+        setBackground(new GreenfootImage("Forest.png"));
+        
         Player player = new Player();
-        addObject(player,754,355);
-        Door door = new Door(2);
-        addObject(door,145,352);
-        door.setLocation(124,544);
+        addObject(player,734,100);
+        
+        Door door = new Door();
+        addObject(door,108,424);
+        
         Grass grass = new Grass();
-        addObject(grass,396,387);
-        grass.setLocation(390,597);
-        door.setLocation(108,424);
-        player.setLocation(734,555);
-        door.setLocation(69,527);
+        addObject(grass,390,597);
+        
+        HealthBar healthBar = new HealthBar();
+        addObject(healthBar,743,51);
     }
     
     public void act()

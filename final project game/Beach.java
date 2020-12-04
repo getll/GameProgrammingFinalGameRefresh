@@ -17,7 +17,6 @@ public class Beach extends World
     public Beach()
     {
         super(900, 600, 1);
-        setBackground(new GreenfootImage("Beach.png"));
         prepare();
     }
 
@@ -27,10 +26,16 @@ public class Beach extends World
      */
     private void prepare()
     {
-        Door door = new Door(3);
+        setBackground(new GreenfootImage("Beach.png"));
+        
+        Door door = new Door();
         addObject(door,116,529);
+        
         Player player = new Player();
         addObject(player,705,528);
+        
+        HealthBar healthBar = new HealthBar();
+        addObject(healthBar,743,51);
     }
     
     public void act()
