@@ -30,27 +30,31 @@ public class Streets extends World
     {
         Player player = new Player();
         addObject(player,740,546);
-        
+
         Door door = new Door();
         addObject(door,106,532);
-        
+
         Zombie zombie = new Zombie(1, 5, 2);
         addObject(zombie,224,548);
-        
+
         Zombie zombie2 = new Zombie(1, 5, 2);
         addObject(zombie2,294,540);
-        
+
         Zombie zombie3 = new Zombie(1, 5, 2);
         addObject(zombie3,371,543);
-        
+
         Zombie zombie4 = new Zombie(1, 5, 2);
         addObject(zombie4,429,544);
-        
+
         floor floor = new floor();
         addObject(floor,466,589);
-        
+
         HealthBar healthBar = new HealthBar();
         addObject(healthBar,743,51);
+        player.setLocation(744,527);
+        PlayerArm playerArm = new PlayerArm();
+        addObject(playerArm,744,527);
+        player.setLocation(750,508);
     }
     
     public void act()

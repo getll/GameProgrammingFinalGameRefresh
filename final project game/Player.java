@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class Player extends Actor
 {
-    private int firingRate;
+    private int firingRate = 20;
     private int firingCounter;
     private static int health = 100;
     private static int levelProgress = 0;
@@ -20,7 +20,6 @@ public class Player extends Actor
     public Player()
     {
         velocity = 0;
-        firingRate = 20;
         firingCounter = 0;
     }
     
@@ -30,6 +29,7 @@ public class Player extends Actor
         shoot();
         fall();
         checkGameOver();
+        flip();
     }
     
     public static void reset()
@@ -56,20 +56,34 @@ public class Player extends Actor
             move(-4);
         if (Greenfoot.isKeyDown("d"))
             move(4);
-        if(Greenfoot.isKeyDown("w")&& isOnSolidGround())
+        if(Greenfoot.isKeyDown("w") && isOnSolidGround())
             jump();
     }
     
     public void shoot()
     {
-        if (Greenfoot.isKeyDown("space"))
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        
+        if (Greenfoot.isKeyDown("space") && mouse != null)
         {
             firingCounter++;
             
             if (firingCounter == firingRate)
             {
                 World world = getWorld();
-                world.addObject(new Bullet(), getX(), getY());
+                int difference = -20;
+                Bullet bullet = new Bullet();
+                
+                double adjacent = mouse.getX() - getX();
+                double opposite = mouse.getY() - getY();
+            
+                double angleRadians = Math.atan2(opposite, adjacent);
+                double angleDegrees = Math.toDegrees(angleRadians);
+            
+                world.addObject(bullet, getX(), getY() + difference);
+                double rotate = 180.1;
+                bullet.setRotation((int) angleDegrees + 180);
+                
                 firingCounter = 0;
             }
         }
@@ -124,6 +138,22 @@ public class Player extends Actor
         health -= damage;
     }
     
+    public void flip()
+    {
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        
+        if (mouse != null)
+        {
+            double adjacent = mouse.getX() - getX();
+            double opposite = mouse.getY() - getY();
+            
+            if (adjacent > 0)
+                setImage("player no arm.png");
+            else
+                setImage("player no arm 2.png");
+        }
+    }
+    
     public static int getHealth()
     {
         return health;
@@ -144,14 +174,3 @@ public class Player extends Actor
         return levelProgress;
     }
 }
-
-
-
-
-
-
-
-
-
-
-

@@ -93,9 +93,16 @@ public class Hopsital extends World
 
         Zombie zombie3 = new Zombie(1, 5, 2);
         addObject(zombie3,329,545);
-        
+
         HealthBar healthBar = new HealthBar();
         addObject(healthBar,743,51);
+        player.setLocation(237,201);
+        PlayerArm playerArm = new PlayerArm();
+        addObject(playerArm,237,201);
+        playerArm.setLocation(230,179);
+        player.setLocation(200,245);
+        player.setLocation(210,213);
+        playerArm.setLocation(190,213);
     }
 
     public void act()

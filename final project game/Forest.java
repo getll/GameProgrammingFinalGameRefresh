@@ -27,19 +27,20 @@ public class Forest extends World
      */
     private void prepare()
     {
-        
-        
         Player player = new Player();
-        addObject(player,734,100);
-        
+        addObject(player,751,512);
+
         Door door = new Door();
-        addObject(door,108,424);
-        
+        addObject(door,108,535);
+
         Grass grass = new Grass();
         addObject(grass,390,597);
-        
+
         HealthBar healthBar = new HealthBar();
         addObject(healthBar,743,51);
+        
+        PlayerArm playerArm = new PlayerArm();
+        addObject(playerArm,748,491);
     }
     
     public void act()
